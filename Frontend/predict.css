@@ -2,14 +2,24 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-image: linear-gradient(to right,#99a813,#0f8115);
+}
+
+a{
+    text-decoration: none !important;
+    list-style: none !important;
+    color: #fff !important;
+}
+a:hover{
+    text-decoration: none !important;
+    list-style: none !important;
 }
 
 h1 {
     text-align: center;
     margin-top: 50px;
     margin-bottom: 30px;
-    color: #333;
+    color: #fffefe;
 }
 
 form {
@@ -22,7 +32,7 @@ form {
 label {
     display: block;
     margin-bottom: 10px;
-    color: #666;
+    color: #f9f5f5;
 }
 
 input[type=file] {
@@ -38,18 +48,17 @@ input[type=file] {
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
+    padding: 10px 25px;
+    background-color: #db2b2b;
     border: none;
     color: #fff;
     font-size: 16px;
-    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #3e8e41;
+    background-color: #3d2ec6;
 }
 
 #imgDisplay {
