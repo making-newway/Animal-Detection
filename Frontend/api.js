@@ -22,12 +22,15 @@ function postImage() {
     });
 }
 
-function readURL(input) {
+function readURL() {
+    const input = document.getElementById("imgInput");
     if (input.files && input.files[0]) {
-        var reader = new FileReader();
-    
+        const reader = new FileReader();
         reader.onload = function (e) {
-            document.getElementById("blah").setAttribute("src", e.target.result);
+            const img = new Image();
+            img.src = e.target.result;
+            document.getElementById("imgDisplay").innerHTML = "";
+            document.getElementById("imgDisplay").appendChild(img);
         };
         reader.readAsDataURL(input.files[0]);
     }
