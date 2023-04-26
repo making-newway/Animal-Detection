@@ -1,0 +1,107 @@
+/*index.html page styling*/
+
+body {
+    background-image: url('https://images.unsplash.com/photo-1486365227551-f3f90034a57c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	margin: 0;
+    backdrop-filter: blur(2px);
+}
+
+* {
+    box-sizing: border-box;
+  }
+
+.bg-text {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.logo {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+
+h1 {
+	font-size: 36px;
+	font-weight: bold;
+	opacity: 0;
+	animation-name: slideIn;
+	animation-duration: 3s;
+	animation-fill-mode: forwards;
+    margin: 0;
+	text-align: center;
+}
+
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translateY(-50%);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0%);
+	}
+}
+
+.description {
+	font-size: 24px;
+	font-weight: bold;
+	color: #fff;
+	
+	padding: 20px;
+	border-radius: 10px;
+	
+	opacity: 0; /* start with 0 opacity */
+	animation-name: fade-in;
+	animation-duration: 5s;
+	animation-fill-mode: forwards; /* keep final style after animation ends */
+    margin: 20px;
+	text-align: center;
+}
+
+@keyframes fade-in {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+.button {
+	display: inline-block;
+	font-size: 20px;
+	font-weight: bold;
+	color: #fff;
+	background: #19ad3e;
+	padding: 15px 30px;
+	border-radius: 10px;
+	text-decoration: none;
+	transition: background 0.5s;
+    position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.button:hover {
+	background: #3889d0;
+    color: #fff;
+}
