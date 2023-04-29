@@ -6,7 +6,7 @@ const tf = require('@tensorflow/tfjs-node');
 const path = require('path')
 
 const app = express();
-const port = 5000 || process.env.PORT;
+const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -15,8 +15,9 @@ const modelPath = path.resolve('./model/json/model.json');
 const classes = ['Bear', 'Brown bear', 'Bull', 'Butterfly', 'Camel', 'Canary', 'Caterpillar', 'Cattle', 'Centipede', 'Cheetah', 'Chicken', 'Crab', 'Crocodile', 'Deer', 'Duck', 'Eagle', 'Elephant', 'Fish', 'Fox', 'Frog', 'Giraffe', 'Goat', 'Goldfish', 'Goose', 'Hamster', 'Harbor seal', 'Hedgehog', 'Hippopotamus', 'Horse', 'Jaguar', 'Jellyfish', 'Kangaroo', 'Koala', 'Ladybug', 'Leopard', 'Lion', 'Lizard', 'Lynx', 'Magpie', 'Monkey', 'Moths and butterflies', 'Mouse', 'Mule', 'Ostrich', 'Otter', 'Owl', 'Panda', 'Parrot', 'Penguin', 'Pig', 'Polar bear', 'Rabbit', 'Raccoon', 'Raven', 'Red panda', 'Rhinoceros', 'Scorpion', 'Sea lion', 'Sea turtle', 'Seahorse', 'Shark', 'Sheep', 'Shrimp', 'Snail', 'Snake', 'Sparrow', 'Spider', 'Squid', 'Squirrel', 'Starfish', 'Swan', 'Tick', 'Tiger', 'Tortoise', 'Turkey', 'Turtle', 'Whale', 'Woodpecker', 'Worm', 'Zebra']
 
 app.post('/predict', upload.single('image'), async (req, res) => {
-    const imgBuffer = req.file.buffer;
+    const imgBuffer = req.file?.buffer;
     const img = tf.node.decodeImage(imgBuffer);
+    if(!img) return res.status(404).json({ error: 'Insert Image' });
     const preprocessed = preprocessImage(img);
     const model = await tf.loadLayersModel(`file://${modelPath}`);
     const predictions = model.predict(preprocessed);
@@ -30,5 +31,16 @@ function preprocessImage(img) {
     const batched = normalized.expandDims(0);  
     return batched;
 }
+
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, '/Frontend/index.html'));
+});
+
+app.get('/predict', function(req, res) {
+    res.sendFile(path.join(__dirname, '/Frontend/predict.html'));
+});
+
+app.use(express.static(path.join(__dirname, '/public')));
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
