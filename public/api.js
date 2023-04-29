@@ -35,6 +35,7 @@ function readURL() {
             img.src = e.target.result;
             document.getElementById("imgDisplay").innerHTML = "";
             document.getElementById("imgDisplay").appendChild(img);
+            document.getElementById("className").innerText = "";
         };
         reader.readAsDataURL(input.files[0]);
     }
