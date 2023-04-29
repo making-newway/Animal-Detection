@@ -1,4 +1,8 @@
 node_modules/
 package-lock.json
 .env
+<<<<<<< HEAD
 Procfile
+=======
+Procfile
+>>>>>>> f238aed78256bd74728b13670f29ede83702e67d
